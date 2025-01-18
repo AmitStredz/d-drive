@@ -3,8 +3,7 @@ import axios from "axios";
 import React from "react";
 import { ColorRing, Oval, RotatingLines } from "react-loader-spinner";
 
-import { CircularProgress } from '@mui/material';
-
+import { CircularProgress } from "@mui/material";
 
 export default function FileUpload({ contract, walletAddress, provider }) {
   const [file, setFile] = React.useState("");
@@ -28,7 +27,7 @@ export default function FileUpload({ contract, walletAddress, provider }) {
         console.log("started uploading");
 
         const formData = new FormData();
-        
+
         console.log(formData);
         formData.append("file", file);
 
@@ -99,7 +98,7 @@ export default function FileUpload({ contract, walletAddress, provider }) {
             Upload
           </button>
         ) : (
-          <CircularProgress size={20}/>
+          <CircularProgress size={20} />
         )}
       </form>
     </div>

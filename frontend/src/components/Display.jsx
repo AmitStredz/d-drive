@@ -10,9 +10,30 @@ export default function Display({ contract, walletAddress, provider }) {
     e.preventDefault();
 
     try {
-      const response = await contract.display(inputUrl || walletAddress);
-      console.log(response);
-      setFetchData(response);
+      console.log("1");
+      
+      // if (inputUrl && inputUrl.length > 0) {
+      //   console.log("2");
+      //   const response = await contract.display(inputUrl);
+      // } else {
+      //   console.log("3: ", walletAddress);
+      //   const response = await contract.display(walletAddress);
+      // }
+
+      contract
+          .display(inputUrl || walletAddress)
+          .then((tx) => {
+            console.log(tx);
+            setFetchData(tx);
+            // alert("Image Uploaded Successfully");
+          })
+          .catch((error) => {
+            console.error(error);
+            // alert("Unable to upload Image");
+          });
+
+      // console.log(response);
+      // setFetchData(response);
     } catch (error) {
       console.error(error);
     }

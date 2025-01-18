@@ -17,6 +17,8 @@ function App() {
     if (window.ethereum) {
       provider = new ethers.providers.Web3Provider(window.ethereum);
       console.log("1");
+      const network = await provider.getNetwork();
+      console.log(network);
     } else {
       console.log("Ethereum provider not found");
       return;
@@ -32,8 +34,8 @@ function App() {
         const address = await signer.getAddress();
         setWalletAddress(address);
         console.log("Wallet connected: ", address);
-        
-        let contractAddress = "0xe7f1725e7734ce288f8367e1bb143e90bb3f0512";
+
+        let contractAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
         const contract = new ethers.Contract(
           contractAddress,
           Upload.abi,
@@ -101,7 +103,10 @@ function App() {
       )}
 
       <div className="absolute top-5 left-5">
-        <button className="p-2 px-4 border border-black rounded-md bg-blue-400 hover:bg-opacity-70 transition-all cursor-pointer" onClick={() => setIsModalOpen(true)}>
+        <button
+          className="p-2 px-4 border border-black rounded-md bg-blue-400 hover:bg-opacity-70 transition-all cursor-pointer"
+          onClick={() => setIsModalOpen(true)}
+        >
           Share
         </button>
       </div>

@@ -24,7 +24,7 @@ const [accessList, setAccessList] = React.useState([]);
   const fetchAccessList = async () => {
     try {
       const response = await contract.shareAccess();
-      console.log(response);
+      console.log("FetchResponse: ",response);
       setAccessList(response);
     } catch (error) {
       console.error(error);
